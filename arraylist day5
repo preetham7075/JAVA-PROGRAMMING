@@ -1,0 +1,12 @@
+import java.util.ArrayList;
+public class Arraylist {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add(0, "ABC");
+        list.add(1, "OEF");
+        list.add(2, "GHJ");
+        System.out.println(list);
+        list.remove(2);
+        System.out.println(list);
+    }
+}
