@@ -1,0 +1,22 @@
+import java.util.HashMap;
+public class Hashmap {
+    public static void main(String[] args) {
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        hashMap.put("apple", 10);
+        hashMap.put("banana", 20);
+        hashMap.put("orange", 15);
+        int appleQuantity = hashMap.get("apple");
+        int orangeQuantity = hashMap.get("orange");
+        System.out.println("Quantity of apples: " + appleQuantity);
+        System.out.println("Quantity of oranges: " + orangeQuantity);
+        hashMap.remove("banana");
+        boolean hasBanana = hashMap.containsKey("banana");
+        System.out.println("Does the map contain 'banana'? " + hasBanana);
+        System.out.println("Remaining items in the map:");
+        for (String key : hashMap.keySet()) {
+            int quantity = hashMap.get(key);
+            System.out.println(key + ": " + quantity);
+        }
+    }
+}
+
