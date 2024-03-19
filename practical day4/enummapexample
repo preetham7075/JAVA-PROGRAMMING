@@ -1,0 +1,48 @@
+import java.util.EnumMap;
+enum BAT {
+    CRICKET, BASEBALL, SOFTBALL
+}
+enum TRIO {
+    ONE, TWO, THREE
+}
+public class EnumMapExample {
+    public static void main(String[] args) {
+        EnumMap<BAT, String> batEnumMap = new EnumMap<>(BAT.class);
+        batEnumMap.put(BAT.CRICKET, "Cricket");
+        batEnumMap.put(BAT.BASEBALL, "Baseball");
+        batEnumMap.put(BAT.SOFTBALL, "Softball");
+        System.out.println("Original BAT enum map: " + batEnumMap);
+        if (!batEnumMap.containsKey(BAT.CRICKET)) {
+            batEnumMap.clear();
+        }
+        EnumMap<BAT, String> clonedBatEnumMap = batEnumMap.clone();
+        System.out.println("Cloned BAT enum map: " + clonedBatEnumMap);
+        System.out.println("Original BAT enum map after clearing: " + batEnumMap);
+        if (batEnumMap.containsKey(BAT.SOFTBALL)) {
+            System.out.println("The map contains a mapping for SOFTBALL.");
+        } else {
+            for (BAT key : BAT.values()) {
+                batEnumMap.put(key, TRIO.values()[key.ordinal()].toString());
+            }
+            System.out.println("Replaced values with TRIO enum map values: " + batEnumMap);
+        }
+        int primeCount = 0;
+        for (BAT key : batEnumMap.keySet()) {
+            if (isPrime(key.ordinal())) {
+                primeCount++;
+            }
+        }
+        System.out.println("Number of prime key-value pairs present: " + primeCount);
+    }
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
